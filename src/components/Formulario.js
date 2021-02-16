@@ -50,6 +50,8 @@ const Formulario = () => {
         plan: ''
     })
 
+    const [error, setError] = useState(false);
+
     // Extraer los valores del state
 
     const { marca, year, plan } = datos;
@@ -62,8 +64,45 @@ const Formulario = () => {
         })
     }
 
+    // Cuando el usuario presiona submit
+
+    const cotizarSeguro = e => {
+        e.preventDefault();
+
+        if (marca.trim() === '' || year.trim() === '' || plan.trim() === '') {
+            setError(true);
+            return;
+        }
+
+        setError(false);
+
+        // Obtener la diferencia de años
+
+        // Por cada año hay que restar el 3%
+
+        // Americano 15
+        // Asiatico 5%
+        // Europeo 30%
+
+    }
+
+    const Error = styled.div`
+      background-color: red;
+      color: white;
+      padding: 1rem;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 2rem;
+    `;
+
+
     return (
-        <form action="">
+        <form
+            onSubmit={ cotizarSeguro }
+        >
+            {error
+                ? <Error>Todos los campos son obligatorios</Error>
+                : null }
             <Campo>
                 <Label>Marca</Label>
                 <Select name="marca" value={ marca } onChange={ obtenerInformacion }>
@@ -96,7 +135,7 @@ const Formulario = () => {
                 <InputRadio type="radio" name="plan" value="completo" checked={ plan === 'completo' } onChange={ obtenerInformacion } /> Completo
             </Campo>
 
-            <Boton type="submit">Cotizar</Boton>
+            <Boton type="button" onClick={ cotizarSeguro }>Cotizar</Boton>
         </form>
     )
 }
