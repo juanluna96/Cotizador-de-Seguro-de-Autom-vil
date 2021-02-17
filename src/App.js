@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 import Resumen from './components/Resumen';
+import Resultado from './components/Resultado';
 import styled from '@emotion/styled'
 
 const Contenedor = styled.div`
@@ -17,7 +18,7 @@ const ContenedorFormulario = styled.div`
 function App() {
 
   const [resumen, setResumen] = useState({});
-  const { datos } = resumen;
+  const { cotizacion, datos } = resumen;
 
   return (
     <Contenedor>
@@ -29,6 +30,7 @@ function App() {
             ? <Resumen datos={ datos }></Resumen>
             : null
         }
+        <Resultado cotizacion={ cotizacion }></Resultado>
       </ContenedorFormulario>
     </Contenedor>
   );
