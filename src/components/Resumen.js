@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
 import { primerMayuscula } from '../helper'
@@ -23,6 +24,14 @@ const Resumen = ({ datos }) => {
             </ul>
         </ContenedorResumen>
     )
+}
+
+Resumen.propTypes = {
+    datos: PropTypes.shape({
+        marca: PropTypes.any,
+        plan: PropTypes.any,
+        year: PropTypes.any
+    })
 }
 
 export default Resumen

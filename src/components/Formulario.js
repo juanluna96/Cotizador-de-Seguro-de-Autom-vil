@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { obtenerDiferenciaYear, calcularMarca, obtenerPlan } from '../helper'
+import PropTypes from 'prop-types'
+
 
 const Campo = styled.div`
 display: flex;
@@ -103,7 +105,7 @@ const Formulario = ({ setResumen, setCargando }) => {
             setCargando(false);
             // Pasa la informacion al componente principal
             setResumen({
-                cotizacion: resultado,
+                cotizacion: Number(resultado),
                 datos
             })
         }, 3000)
@@ -163,6 +165,11 @@ const Formulario = ({ setResumen, setCargando }) => {
             <Boton type="button" onClick={ cotizarSeguro }>Cotizar</Boton>
         </form>
     )
+}
+
+Formulario.propTypes = {
+    setCargando: PropTypes.func,
+    setResumen: PropTypes.func
 }
 
 export default Formulario

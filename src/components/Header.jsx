@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from 'react'
 import styled from '@emotion/styled';
 
@@ -23,6 +24,10 @@ const Header = ({ titulo }) => {
             </ContenedorHeader>
         </div>
     )
+}
+
+Header.propTypes = {
+    titulo: PropTypes.any
 }
 
 export default Header

@@ -30,7 +30,7 @@ function App() {
         <Formulario setResumen={ setResumen } setCargando={ setCargando }></Formulario>
         { cargando ? <Spinner></Spinner> : null }
         {
-          datos
+          datos && !cargando
             ? <Resumen datos={ datos }></Resumen>
             : null
         }
